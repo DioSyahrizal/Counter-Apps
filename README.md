@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Simple Redux-saga with React-Typesript
 
 ## Table of Contents
@@ -7,7 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [Introduction](#introduction)
 - [Why Using This Stack](#why-using-this-stack)
 - [Description and Flow of the Project](#description_and_flow_of_the_project)
-- [Learn More](#learn-more)
+- [How to Run](#how_to_run)
+- [References](#references)
 
 ## Introduction
 
@@ -33,15 +32,24 @@ The problem we facing later in development app in React is you will confuse to m
 Redux-saga is a redux middleware library, that is designed to make handling side effects in your redux app nice and simple. It achieves this by leveraging an ES6 feature called Generators, allowing us to write asynchronous code that looks synchronous, and is very easy to test.
 
 ### Description and Flow of the Project
-The idea of the project is we will use redux for manage our state such as counter and result globally. And we gonna using a simple REST API. Check this [repo](a) for using REST that i build
+The idea of the project is we will use redux for manage our state such as counter and result globally. And we gonna using a simple REST API. Check this [repo](https://github.com/DioSyahrizal/counter-server) for using REST that i build.
+
+Redux-Saga will be a middleware that can manage fetch, store, and delete from the API to our project.
+
+## How to Run
+Install the package first
+### `yarn install`
+
+Run the apps in development mode (Make sure the server is running first)
+### `yarn start`
+
+Run apps in production
+### `yarn build`
 
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
+## References
 Great article about [Redux-Saga](https://engineering.universe.com/what-is-redux-saga-c1252fc2f4d1)
+
+Writer: [Dio Syahrizal](https://github.com/DioSyahrizal)
 
 
