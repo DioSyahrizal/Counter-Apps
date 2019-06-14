@@ -1,44 +1,47 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Simple Redux-saga with React-Typesript
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Why Using This Stack](#why-using-this-stack)
+- [Description and Flow of the Project](#description_and_flow_of_the_project)
+- [Learn More](#learn-more)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Introduction
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+This is a simple app with the CRD Function, it doesn't have a Update function because we not use the form :). We manage the state with Redux, and use middleware for Redux using Redux Saga
 
-### `npm test`
+## Why Using This Stack?
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### React with TypeScript
+Don't worry guys you will enjoy using it. This is the example of benefit using Typescript :
 
-### `npm run build`
+- TypeScript simplifies JavaScript code, making it easier to read and debug.
+- TypeScript is open source.
+- TypeScript provides highly productive development tools for JavaScript IDEs and practices, like static checking.
+- TypeScript makes code easier to read and understand.
+- With TypeScript, we can make a huge improvement over plain JavaScript.
+- TypeScript gives us all the benefits of ES6 (ECMAScript 6), plus more productivity.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Check the article in this page for the detail](https://dzone.com/articles/what-is-typescript-and-why-use-it)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Redux and Redux Saga
+The problem we facing later in development app in React is you will confuse to manage the state. It's possible to passing the state to props, but if you have a lot of component it's gonna be messing your project. The solution for this problem is you can use a state management. Aaand redux is a state management and a pretty popular ones! So we can use it :D
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Redux-saga is a redux middleware library, that is designed to make handling side effects in your redux app nice and simple. It achieves this by leveraging an ES6 feature called Generators, allowing us to write asynchronous code that looks synchronous, and is very easy to test.
 
-### `npm run eject`
+### Description and Flow of the Project
+The idea of the project is we will use redux for manage our state such as counter and result globally. And we gonna using a simple REST API. Check this [repo](a) for using REST that i build
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Great article about [Redux-Saga](https://engineering.universe.com/what-is-redux-saga-c1252fc2f4d1)
+
+

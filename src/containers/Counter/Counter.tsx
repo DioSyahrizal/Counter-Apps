@@ -5,28 +5,31 @@ import {
     decrement,
     add,
     substract,
-    store_result,
-    delete_result
-    } from '../../store/action'
+    fetch_request,
+    store_request,
+    delete_request
+} from '../../store/counter/action'
+import { getCounter, getResult } from '../../store/counter/selector'
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-
+import { Result } from '../../store/counter/types';
 
 interface IProps {
     ctr: number,
-    storedResult: [{
-        id: string,
-        val: number
-    }],
-    onIncrementCounter: ()=>void,
-    onDecrementCounter: ()=>void,
-    onAddCounter: ()=>void,
-    onSubstract: ()=>void,
-    onStoreResult: (counter: number)=>void,
-    onDeleteResult: (id: string) => void
+    storedResult: Result[],
+    onIncrementCounter: typeof increment,
+    onDecrementCounter: typeof decrement,
+    onAddCounter: typeof add,
+    onSubstract: typeof substract,
+    fetch_request: typeof fetch_request,
+    onStoreRequest: typeof store_request,
+    onDeleteRequest: typeof delete_request
 }
 
 class Counter extends React.Component <IProps> {
+    componentDidMount = () => {
+      this.props.fetch_request();
+    };
 
     render () {
         return (
@@ -37,10 +40,10 @@ class Counter extends React.Component <IProps> {
                 <CounterControl label="Add 5" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract 5" clicked={this.props.onSubstract}  />
                 <hr/>
-                <button onClick={() => this.props.onStoreResult(this.props.ctr)}>Store Result</button>
+                <button onClick={() => this.props.onStoreRequest({id: Date(), val: this.props.ctr})}>Store Result</button>
                 <ul>
-                    {this.props.storedResult.map((strResult: { id: string; val: number }) => (
-                        <li key={strResult.id} onClick={() => this.props.onDeleteResult(strResult.id)}>{strResult.val}</li>
+                    {this.props.storedResult.map((strResult: { id: string; val: number }, index) => (
+                        <li key={strResult.id} onClick={() => this.props.onDeleteRequest(index)}>{strResult.val}</li>
                     ))}
                 </ul>
             </div>
@@ -48,18 +51,10 @@ class Counter extends React.Component <IProps> {
     }
 }
 
-function getCounter(counterState: { counter: number, result: any }) {
-    return counterState.counter
-}
-
-function getResult(counterState: { counter: number, result: any }) {
-    return counterState.result
-}
-
-const mapStateToProps = (state: { counter: number, result: any }) => {
+const mapStateToProps = (state: any) => {
     return {
-        ctr: getCounter(state),
-        storedResult: getResult(state)
+        ctr: getCounter(state.data),
+        storedResult: getResult(state.data)
     }
 }
 
@@ -79,8 +74,9 @@ const mapDispatchToProps = {
     onDecrementCounter: decrement,
     onAddCounter: add,
     onSubstract: substract,
-    onStoreResult: store_result,
-    onDeleteResult: delete_result
+    fetch_request: fetch_request,
+    onStoreRequest: store_request,
+    onDeleteRequest: delete_request
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
