@@ -1,15 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import './CounterOutput.css';
+import "./CounterOutput.css";
 
 type PropValue = {
-    value: number
-}
+    value: number;
+};
 
-const counterOutput: React.FC<PropValue> = (props) => (
-    <div className="CounterOutput">
-        Current Counter: {props.value}
-    </div>
-);
+const counterOutput: React.FC<PropValue> = props => <div className="CounterOutput">Current Counter: {props.value}</div>;
 
 export default counterOutput;

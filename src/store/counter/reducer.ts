@@ -1,13 +1,12 @@
-import { Reducer , combineReducers } from 'redux'
-import { CounterActionTypes, CounterState} from './types';
+import { Reducer, combineReducers } from "redux";
+import { CounterActionTypes, CounterState } from "./types";
 
-const initialState:CounterState = {
+const initialState: CounterState = {
     counter: 0,
-    result: []
-}
+    result: [],
+};
 
-
-const counter:Reducer<CounterState['counter']>=(state = initialState.counter, { type, payload }) => {
+const counter: Reducer<CounterState["counter"]> = (state = initialState.counter, { type, payload }) => {
     switch (type) {
         case CounterActionTypes.INCREMENT:
             return state + 1;
@@ -19,24 +18,24 @@ const counter:Reducer<CounterState['counter']>=(state = initialState.counter, { 
             return state - payload;
     }
     return state;
-}
+};
 
-const result:Reducer<CounterState['result']>=(state = initialState.result, { type, payload }) => {
+const result: Reducer<CounterState["result"]> = (state = initialState.result, { type, payload }) => {
     switch (type) {
         case CounterActionTypes.FETCH_RESULT:
             return payload;
         case CounterActionTypes.STORE_RESULT:
             //return payload;
-            return state.concat(payload)
+            return state.concat(payload);
         case CounterActionTypes.DELETE_RESULT:
             return state.filter((item: { id: string }, index) => index !== payload);
     }
-    return state
-}
+    return state;
+};
 
 const CounterReducer = combineReducers<CounterState>({
     counter,
-    result
-})
+    result,
+});
 
 export default CounterReducer;

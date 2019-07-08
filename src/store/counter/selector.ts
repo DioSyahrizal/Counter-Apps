@@ -1,9 +1,9 @@
 import { CounterState } from "./types";
 
 export function getCounter(state: CounterState) {
-    return state.counter
+    return state.counter;
 }
 
 export function getResult(state: CounterState) {
-    return state.result
+    return state.result;
 }
